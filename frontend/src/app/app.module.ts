@@ -1,14 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +25,14 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { RedDirective } from './directives/red.directive';
 import { ForDirective } from './directives/for.directive';
-import { ProductCreateComponent } from './components/product-create/product-create.component';
+import { ProductSaveComponent } from './components/product/product-save/product-save.component';
+import { ProductListComponent } from './components/product/product-list/product-list.component';
+
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
+
+registerLocaleData(localePt);
 
 @NgModule({
     declarations: [
@@ -32,7 +44,9 @@ import { ProductCreateComponent } from './components/product-create/product-crea
         ProductsComponent,
         RedDirective,
         ForDirective,
-        ProductCreateComponent
+        ProductSaveComponent,
+        ProductListComponent,
+        ProductDeleteComponent
     ],
     imports: [
         BrowserModule,
@@ -44,9 +58,17 @@ import { ProductCreateComponent } from './components/product-create/product-crea
         MatCardModule,
         MatButtonModule,
         MatSnackBarModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule
     ],
-    providers: [],
+    providers: [
+        { provide: LOCALE_ID, useValue: 'pt-BR' }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
