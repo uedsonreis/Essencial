@@ -18,7 +18,7 @@ export class ProductService {
         horizontalPosition: 'right'
     };
 
-    constructor(private http: HttpClient, private snackBar: MatSnackBar) { }
+    constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
     public showMessage(msg: string, isError: boolean = false): void {
         this.config.panelClass = isError ? ['msg-error'] : ['msg-success'];

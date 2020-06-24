@@ -24,6 +24,13 @@ export class ProductSaveComponent implements OnInit {
         }
     }
 
+    public isValid(): boolean {
+        const { name, price } = this.product;
+        if (!name || name === null || name.trim() === '') return false;
+        if (!price || price === null) return false;
+        return true;
+    }
+
     public save(): void {
         if (this.product.id) {
             this.productService.update(this.product).subscribe(product => {

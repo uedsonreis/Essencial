@@ -1,6 +1,7 @@
 import { createReducer, on, combineReducers, ActionReducerMap, Action } from '@ngrx/store';
 import { logout, updateUser, addItem, removeItem } from './actions'
 import { Item } from '../models/item.model';
+import { User } from '../models/user.model';
 
 export const stateKeys = [ 'cart', 'user' ];
 
@@ -22,10 +23,10 @@ const cartReducer = createReducer<Item[]>(
     ))
 );
 
-const userReducer = createReducer<any>(
-    {},
+const userReducer = createReducer<User>(
+    {} as User,
     on(logout, (state: any, payload: any) => ({})),
-    on(updateUser, (state: any, payload: any) => (merge(state, payload)))
+    on(updateUser, (state: User, payload: any) => (merge(state, payload)))
 );
 
 export default {

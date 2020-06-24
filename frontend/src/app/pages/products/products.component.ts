@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store, select } from '@ngrx/store';
+
 import { HeaderService } from 'src/app/services/header.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
     selector: 'add-products',

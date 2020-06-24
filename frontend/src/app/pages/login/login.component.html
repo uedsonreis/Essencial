@@ -1,0 +1,18 @@
+<mat-card>
+
+    <mat-card-title>Autenticação de Usuário</mat-card-title>
+    <mat-card-subtitle>Informe seu Nome de Usuário e sua Senha para acessar o sistema</mat-card-subtitle>
+
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Nome de Usuário" [(ngModel)]="user.username" name="username" />
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="password" placeholder="Senha" [(ngModel)]="user.password" name="password" />
+        </mat-form-field>
+    </form>
+
+    <button mat-raised-button (click)="login()" color="primary" [disabled]="!isValid()">Entrar</button>
+
+</mat-card>

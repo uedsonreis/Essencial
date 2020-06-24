@@ -37,6 +37,7 @@ import { ProductDeleteComponent } from './components/product/product-delete/prod
 
 import reducerMap, { stateKeys } from './redux/reducer';
 import { CartComponent } from './pages/cart/cart.component';
+import { LoginComponent } from './pages/login/login.component';
 
 registerLocaleData(localePt);
 
@@ -57,7 +58,8 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
         ProductSaveComponent,
         ProductListComponent,
         ProductDeleteComponent,
-        CartComponent
+        CartComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,

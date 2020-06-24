@@ -4,6 +4,8 @@ import { Store, select } from '@ngrx/store';
 
 import { addItem, removeItem } from 'src/app/redux/actions';
 import { Item } from 'src/app/models/item.model';
+import { HeaderService } from 'src/app/services/header.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
     selector: 'add-cart',
@@ -18,24 +20,22 @@ export class CartComponent implements OnInit {
 
     displayedColumns = ['product', 'price', 'amount', 'actions', 'total'];
 
-    constructor(private store: Store<{ cart: Item[] }>) {
-        this.store.pipe(select('cart')).subscribe(value => {
+    constructor(store: Store<{ cart: Item[] }>, headerService: HeaderService, private cartService: CartService) {
+        headerService.headerData = {
+            title: 'Carrinho de Compras', icon: 'shopping_cart', url: '/cart'
+        };
+
+        store.pipe(select('cart')).subscribe(value => {
             this.dataSource = value;
         })
     }
 
     public remove(item: Item): void {
-        if (item.amount > 1) {
-            this.store.dispatch(addItem({ product: item.product, amount: -1 }));
-        } else {
-            this.store.dispatch(removeItem({ product: item.product, amount: 0 }));
-        }
+        this.cartService.remove(item, 1);
     }
 
     public total() {
-        return this.dataSource.reduce(
-            (total, item) => (total + item.product.price * item.amount), 0.0
-        );
+        return this.cartService.total(this.dataSource);
     }
 
     ngOnInit(): void {}

@@ -10,6 +10,7 @@ import { ProductListDataSource } from './product-list-datasource';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models/product.model';
 import { Item } from 'src/app/models/item.model';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
     selector: 'add-product-list',
@@ -26,7 +27,7 @@ export class ProductListComponent implements OnInit {
 
     displayedColumns = ['id', 'name', 'price', 'actions'];
 
-    constructor(private productService: ProductService, private store: Store) {}
+    constructor(private productService: ProductService, private cartService: CartService) {}
 
     ngOnInit() {
         this.productService.list().subscribe(products => {
@@ -37,8 +38,7 @@ export class ProductListComponent implements OnInit {
     }
 
     public addToCart(product: Product) {
-        const item: Item = { product, amount: 1 };
-        this.store.dispatch(addItem(item));
+        this.cartService.add(product, 1);
     }
 
 }

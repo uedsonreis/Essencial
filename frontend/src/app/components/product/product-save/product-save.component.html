@@ -16,7 +16,7 @@
         </mat-form-field>
     </form>
 
-    <button mat-raised-button (click)="save()" color="primary">
+    <button mat-raised-button (click)="save()" color="primary" [disabled]="!isValid()">
         Salvar
     </button>
 
