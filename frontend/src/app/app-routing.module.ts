@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductSaveComponent } from './components/product/product-save/product-save.component';
 import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 const routes: Routes = [
     { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -12,7 +13,8 @@ const routes: Routes = [
     { path: "products", component: ProductsComponent },
     { path: "products/create", component: ProductSaveComponent },
     { path: "products/update/:id", component: ProductSaveComponent },
-    { path: "products/delete/:id", component: ProductDeleteComponent }
+    { path: "products/delete/:id", component: ProductDeleteComponent },
+    { path: "cart", component: CartComponent },
 ];
 
 @NgModule({

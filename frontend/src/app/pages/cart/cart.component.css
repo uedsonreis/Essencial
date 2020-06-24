@@ -1,0 +1,27 @@
+.full-width-table {
+    width: 100%;
+    margin-top: 16px;
+}
+
+a {
+    vertical-align: middle;
+}
+
+p {
+    text-align: right;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 15px;
+}
+
+.delete > i {
+    color: #e35e6b;
+}
+
+.totalCol {
+    text-align: right;
+}
+
+.delete {
+    color: #e35e6b;
+}

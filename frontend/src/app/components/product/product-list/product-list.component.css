@@ -3,7 +3,11 @@
     margin-top: 16px;
 }
 
-.edit {
+a {
+    vertical-align: middle;
+}
+
+.leftItem {
     margin-right: 16px;
 }
 

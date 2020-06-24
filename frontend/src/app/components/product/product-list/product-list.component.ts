@@ -1,10 +1,15 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
+
+import { Store } from '@ngrx/store';
+import { addItem } from '../../../redux/actions';
+
 import { ProductListDataSource } from './product-list-datasource';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models/product.model';
+import { Item } from 'src/app/models/item.model';
 
 @Component({
     selector: 'add-product-list',
@@ -21,7 +26,7 @@ export class ProductListComponent implements OnInit {
 
     displayedColumns = ['id', 'name', 'price', 'actions'];
 
-    constructor(private productService: ProductService) {}
+    constructor(private productService: ProductService, private store: Store) {}
 
     ngOnInit() {
         this.productService.list().subscribe(products => {
@@ -29,6 +34,11 @@ export class ProductListComponent implements OnInit {
             this.dataSource.sort = this.sort;
             this.dataSource.paginator = this.paginator;
         });
+    }
+
+    public addToCart(product: Product) {
+        const item: Item = { product, amount: 1 };
+        this.store.dispatch(addItem(item));
     }
 
 }

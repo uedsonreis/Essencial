@@ -1,29 +1,32 @@
 {
-  "products": [
-    {
-      "id": 1,
-      "name": "Caneta BIC Básica",
-      "price": 1.75
-    },
-    {
-      "id": 2,
-      "name": "Notebook Mac Pro",
-      "price": 12000
-    },
-    {
-      "id": 3,
-      "name": "Smartphone Samsung S20+",
-      "price": 4499.97
-    },
-    {
-      "name": "Televisão",
-      "price": 2400,
-      "id": 4
-    },
-    {
-      "name": "Máquina de Lavar",
-      "price": 599.9,
-      "id": 5
-    }
-  ]
+    "products": [
+        {
+            "id": 1,
+            "name": "Caneta BIC Básica",
+            "price": 1.75
+        },
+        {
+            "id": 2,
+            "name": "Notebook Mac Pro",
+            "price": 12000
+        },
+        {
+            "id": 3,
+            "name": "Smartphone Samsung S20+",
+            "price": 4499.97
+        },
+        {
+            "name": "Televisão",
+            "price": 2400,
+            "id": 4
+        }
+    ],
+    "users": [
+        {
+            "id": 1,
+            "name": "Uedson Reis",
+            "username": "reis",
+            "password": "123"
+        }
+    ]
 }

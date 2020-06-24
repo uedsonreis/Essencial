@@ -19,7 +19,10 @@
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Ações</th>
             <td mat-cell *matCellDef="let row">
-                <a class="edit" routerLink="/products/update/{{row.id}}">
+                <button mat-button class="leftItem" (click)="addToCart(row)">
+                    <i class="material-icons">add_shopping_cart</i>
+                </button>
+                <a class="leftItem edit" routerLink="/products/update/{{row.id}}">
                     <i class="material-icons">edit</i>
                 </a>
                 <a class="delete" routerLink="/products/delete/{{row.id}}">

@@ -3,6 +3,9 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+import { StoreModule, ActionReducer, ActionReducerMap } from '@ngrx/store';
+import { localStorageSync } from 'ngrx-store-localstorage';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
@@ -32,7 +35,14 @@ import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
 
+import reducerMap, { stateKeys } from './redux/reducer';
+import { CartComponent } from './pages/cart/cart.component';
+
 registerLocaleData(localePt);
+
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+    return localStorageSync({ keys: stateKeys, rehydrate: true })(reducer);
+}
 
 @NgModule({
     declarations: [
@@ -46,7 +56,8 @@ registerLocaleData(localePt);
         ForDirective,
         ProductSaveComponent,
         ProductListComponent,
-        ProductDeleteComponent
+        ProductDeleteComponent,
+        CartComponent
     ],
     imports: [
         BrowserModule,
@@ -64,7 +75,10 @@ registerLocaleData(localePt);
         MatInputModule,
         MatTableModule,
         MatPaginatorModule,
-        MatSortModule
+        MatSortModule,
+        StoreModule.forRoot(
+            reducerMap, { metaReducers: [localStorageSyncReducer] }
+        )
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'pt-BR' }
